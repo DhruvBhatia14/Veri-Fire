@@ -42,6 +42,8 @@ if __name__ == "__main__":
     
     hotels = find_nearby_places(location, 'hotel', radius)
     petrol_pumps = find_nearby_places(location, 'gas_station', radius)
+    restaurants = find_nearby_places(location, 'restaurant', radius)
+    hospitals = find_nearby_places(location, 'hospital', radius)
     
     print("Nearby Hotels:")
     for hotel in hotels:
@@ -50,3 +52,11 @@ if __name__ == "__main__":
     print("\nNearby Petrol Pumps:")
     for petrol_pump in petrol_pumps:
         print(f"Name: {petrol_pump['name']}, Address: {petrol_pump['address']}, Map: {petrol_pump['maps_link']}")
+
+    print("\nNearby Restaurants:")
+    for restaurant in restaurants:
+        print(f"Name: {restaurant['name']}, Address: {restaurant['address']}, Map: {restaurant['maps_link']}")
+
+    print("\nNearby Hospitals:")
+    for hospital in hospitals:
+        print(f"Name: {hospital['name']}, Address: {hospital['address']}, Map: {hospital['maps_link']}")
