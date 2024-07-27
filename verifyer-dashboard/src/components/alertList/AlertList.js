@@ -7,6 +7,7 @@ function AlertsList() {
     const [alerts, setAlerts] = useState([]);
     const [publicUrl, setPublicUrl] = useState('');
     const [headlines, setHeadlines] = useState([]); // New state for headlines
+    const [cbcData, setCbcData] = useState([]); // New state for CBC news data
 
     useEffect(() => {
         const fetchAlerts = async () => {
@@ -34,8 +35,20 @@ function AlertsList() {
             }
         };
 
+        const fetchCbcData = async () => {
+            try {
+                const response = await axios.get('http://localhost:5000/api/cbc-data');
+                const data = JSON.parse(response.data.body); // Parsing the JSON string
+                console.log('CBC Data:', data);
+                setCbcData(data);
+            } catch (error) {
+                console.error('Error fetching CBC data:', error);
+            }
+        };
+
         fetchAlerts();
         fetchHeadlines();
+        fetchCbcData();
     }, []);
 
     // Create a single card content for alerts
@@ -54,10 +67,19 @@ function AlertsList() {
         </Typography>
     ));
 
+    // Create a single card content for CBC news data
+    const cbcContent = cbcData.map((item, index) => (
+        <Typography key={index} variant="body1" component="p">
+            {index + 1}. <a href={item.link} target="_blank" rel="noopener noreferrer">{item.headline}</a>
+            <br />
+            <small>{item.summary}</small>
+        </Typography>
+    ));
+
     return (
         <Container>
             <Grid container spacing={4}>
-                <Grid item xs={12} md={6}>
+                <Grid item xs={12} md={4}>
                     <Card
                         title="Alerts Summary"
                         content={
@@ -77,10 +99,16 @@ function AlertsList() {
                         }
                     />
                 </Grid>
-                <Grid item xs={12} md={6}>
+                <Grid item xs={12} md={4}>
                     <Card
                         title="Latest Headlines from BBC"
                         content={headlineContent}
+                    />
+                </Grid>
+                <Grid item xs={12} md={4}>
+                    <Card
+                        title="Latest CBC News"
+                        content={cbcContent}
                     />
                 </Grid>
             </Grid>
