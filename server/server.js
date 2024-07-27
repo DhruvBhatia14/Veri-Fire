@@ -1,10 +1,12 @@
-// server.js
 const express = require('express');
 const cors = require('cors');
 const axios = require('axios');
 
 const app = express();
 const port = 5000; // Port number for the server
+
+// Middleware to parse JSON bodies
+app.use(express.json());
 
 // Use CORS middleware to handle CORS issues
 app.use(cors());
@@ -18,6 +20,36 @@ app.get('/api/alerts', async (req, res) => {
     } catch (error) {
         console.error('Error fetching data:', error);
         res.status(500).send('Error fetching data');
+    }
+});
+
+// POST endpoint to accept latitude and longitude
+app.post('/api/calculate', async (req, res) => {
+    const { latitude, longitude } = req.body;
+
+    try {
+        const response = await axios.post('https://5j6emnbnq6.execute-api.us-west-2.amazonaws.com/Dev/calculate', {
+            latitude,
+            longitude
+        });
+
+        const data = response.data;
+        res.json(data);
+    } catch (error) {
+        console.error('Error sending data:', error);
+        res.status(500).send('Error sending data');
+    }
+});
+
+// GET endpoint to fetch headlines
+app.get('/api/headlines', async (req, res) => {
+    try {
+        const response = await axios.get('https://5j6emnbnq6.execute-api.us-west-2.amazonaws.com/Dev/getHeadlines');
+        const data = response.data;
+        res.json(data);
+    } catch (error) {
+        console.error('Error fetching headlines:', error);
+        res.status(500).send('Error fetching headlines');
     }
 });
 
