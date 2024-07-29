@@ -77,6 +77,18 @@ app.get('/api/alerter', async (req, res) => {
     }
 });
 
+// Additional endpoint to fetch Al Jazeera data
+app.get('/api/al-jazeera', async (req, res) => {
+    try {
+        const response = await axios.get('https://5j6emnbnq6.execute-api.us-west-2.amazonaws.com/Dev/getJazeeraData');
+        const data = response.data;
+        res.json(data);
+    } catch (error) {
+        console.error('Error fetching Al Jazeera data:', error);
+        res.status(500).send('Error fetching Al Jazeera data');
+    }
+});
+
 // Start the server
 app.listen(port, () => {
     console.log(`Server is running on http://localhost:${port}`);
