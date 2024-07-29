@@ -13,6 +13,7 @@ function App() {
         <Appbar />
         <Routes>
           <Route path="/" element={<AlertsList />} />
+          <Route path="/alerter" element={<AlertsList />} />
           <Route path="/resources" element={<NearbyPlaces />} />
           <Route path="/support" element={<SupportUs />} />
         </Routes>

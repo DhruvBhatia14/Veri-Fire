@@ -1,6 +1,6 @@
-import React, { useState, useEffect } from 'react';
+import { Alert, Card, CardContent, CircularProgress, Container, Divider, Grid, Link, Paper, Typography } from '@mui/material';
 import axios from 'axios';
-import { Container, Typography, List, ListItem, ListItemText, Link, Paper, CircularProgress, Alert, Card, CardContent, Divider, Grid } from '@mui/material';
+import React, { useEffect, useState } from 'react';
 
 const NearbyPlaces = () => {
     const [placesData, setPlacesData] = useState(null);

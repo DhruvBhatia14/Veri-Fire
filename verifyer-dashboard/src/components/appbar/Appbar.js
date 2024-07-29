@@ -1,5 +1,3 @@
-// components/appbar/Appbar.js
-
 import React from 'react';
 import { AppBar, Toolbar, Typography, Button } from '@mui/material';
 import { useNavigate } from 'react-router-dom';

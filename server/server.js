@@ -65,6 +65,18 @@ app.get('/api/cbc-data', async (req, res) => {
     }
 });
 
+// GET endpoint to fetch alerter data
+app.get('/api/alerter', async (req, res) => {
+    try {
+        const response = await axios.get('https://5j6emnbnq6.execute-api.us-west-2.amazonaws.com/Dev/alerter');
+        const data = response.data;
+        res.json(data);
+    } catch (error) {
+        console.error('Error fetching alerter data:', error);
+        res.status(500).send('Error fetching alerter data');
+    }
+});
+
 // Start the server
 app.listen(port, () => {
     console.log(`Server is running on http://localhost:${port}`);
