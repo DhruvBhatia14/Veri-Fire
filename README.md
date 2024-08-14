@@ -10,3 +10,8 @@ Veri-Fire is an innovative, real-time dashboard designed to deliver trusted and 
 
 ## Motivation 💡
 The motivation behind Veri-Fire is to provide a reliable and accessible platform that can significantly enhance the safety and awareness of individuals affected by wildfires. By consolidating crucial information in one place, Veri-Fire aims to facilitate quick decision-making during critical times.
+
+## Future: 
+- Implement the Municipality Puller such that it retrieves real time warnings and notices.
+- Implement https://firesmoke.ca/data?
+- Create Chrome extension which analyzes travel plans for local alerts. 
