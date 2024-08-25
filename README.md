@@ -1,6 +1,5 @@
 # Veri-Fire ✅🔥
 
-## Overview
 Veri-Fire is an innovative, real-time dashboard designed to deliver trusted and verified information about location-based wildfires. This platform serves as a critical resource for active evacuees and individuals seeking up-to-date information on wildfires, road conditions, and related closures.
 
 ## Features 🌟
